@@ -33,7 +33,7 @@
 <main id="main">
 <section class="legal" aria-labelledby="t">
   <h1 id="t">Confidentialité du prototype EatBuddy</h1>
-  <p class="fine">Application Android « EatBuddy » (identifiant <code>app.eatbuddy</code>), version de test 2. Mise à jour le 19 novembre 2026.</p>
+  <p class="fine">Application « EatBuddy » (identifiant <code>app.eatbuddy</code>) : Android, version de test 2, et iPhone (TestFlight). Mise à jour le 19 novembre 2026.</p>
 
   <p>EatBuddy est pour l'instant un <strong>prototype</strong>, proposé à quelques testeurs sur invitation. Cette page dit, sans détour, où vont les données. Elle décrit ce que l'app Android peut garder sur ton téléphone et ce qu'elle peut envoyer pendant le test.</p>
 
@@ -80,14 +80,16 @@
   <h2>Le mode sans IA</h2>
   <p>Sans code testeur, EatBuddy reste en mode manuel : tu notes tes repas toi-même, et rien n'est envoyé à OpenAI ni à l'équipe du test. Avec un code, quand tu ajoutes un repas « sans IA », rien n'est envoyé à OpenAI non plus. Les sauvegardes d'Android et de Drive suivent tes réglages, comme plus haut.</p>
 
-  <h2>Version iPhone (test de fluidité)</h2>
-  <p>La première version iPhone sert surtout à vérifier que l'app est fluide. Elle envoie moins de choses que la version Android :</p>
+  <h2 id="iphone">Version iPhone (test privé)</h2>
+  <p>La version iPhone est plus simple que la version Android : un chat avec EatBuddy. Elle envoie moins de choses :</p>
   <ul>
     <li>Au premier lancement, l'app te demande ton <strong>accord explicite</strong> avant d'envoyer quoi que ce soit à OpenAI. Sans cet accord, rien n'est envoyé. Tu le retires dans Réglages › Quitter le test.</li>
-    <li>Tes messages vont à OpenAI pour obtenir la réponse, comme sur Android. <strong>Ils ne sont pas envoyés au serveur de test</strong> et ne sont pas encore enregistrés sur le téléphone. Chaque réponse passe ensuite par le filtre de contenu d'OpenAI (modération) ; une réponse refusée par ce filtre est masquée.</li>
+    <li><strong>Pas de code ni de compte.</strong> Après ton accord, l'app obtient du serveur de test un jeton d'accès lié à un identifiant tiré au hasard pour cet iPhone. Ce jeton et cet identifiant sont gardés dans le Trousseau de l'iPhone, sans synchronisation iCloud. <strong>Aucune clé OpenAI n'est envoyée à l'iPhone.</strong></li>
+    <li>Tes messages, avec le début de la conversation, passent par <strong>notre serveur de test (Supabase, Union européenne)</strong>, qui les transmet à OpenAI pour obtenir la réponse et te la renvoie. Ce relais <strong>ne garde ni tes messages ni les réponses</strong> et ne les écrit dans aucun journal. Ton message, puis la réponse terminée, passent aussi par le filtre de contenu d'OpenAI (modération) : une demande refusée par ce filtre ne part pas au modèle, et une réponse refusée ou non vérifiée est masquée. Les messages ne sont pas encore enregistrés sur le téléphone : la conversation s'efface quand l'app se ferme.</li>
+    <li>Pour tenir les limites du test et son coût, le serveur note, pour chaque message, la date, le nombre de jetons (volume de texte) et le verdict du filtre, <strong>sans le contenu</strong>. Ces relevés sont effacés si tu quittes le test, et au plus tard 90 jours après.</li>
     <li>Si tu <strong>signales une réponse</strong> (appui long sur la réponse, puis « Signaler »), cette réponse et ton message juste avant (500 caractères au plus chacun) sont envoyés au serveur de test pour que l'équipe les vérifie. Rien d'autre de la conversation.</li>
-    <li>En dehors des signalements, le serveur de test reçoit seulement des <strong>mesures de fluidité</strong> : durée d'affichage des images pendant le défilement, nombre de saccades, temps de démarrage, modèle d'iPhone, version d'iOS et de l'app, version d'affichage du chat choisie. Aucun texte de conversation.</li>
-    <li>Ton code testeur et ta clé d'accès à l'IA sont gardés dans le Trousseau de l'iPhone, sans synchronisation iCloud.</li>
+    <li>Le serveur de test reçoit aussi des <strong>mesures de fluidité</strong> : durée d'affichage des images pendant le défilement, nombre de saccades, temps de démarrage, modèle d'iPhone, version d'iOS et de l'app, version d'affichage du chat choisie. Aucun texte de conversation.</li>
+    <li>Quitter le test (Réglages › Quitter le test et effacer mes données) ferme ton accès tout de suite et efface ce que tu as envoyé au serveur de test (signalements, mesures, relevés d'usage). Sans réseau, l'effacement est refait au lancement suivant.</li>
     <li>Pas de PostHog ni de Sentry sur iPhone pour l'instant.</li>
   </ul>
 
@@ -125,6 +127,8 @@
       <tr><td>Conversations, remarques, relevés d'usage (seulement avec l'accord d'enregistrement ; jamais de photo ni de clé)</td><td>Serveur de test, Supabase UE</td><td>Trouver les problèmes, mesurer le coût, améliorer l'app</td></tr>
       <tr><td>Statistiques d'usage</td><td>PostHog UE, identifiant pseudonyme</td><td>Comprendre l'usage</td></tr>
       <tr><td>Rapports de plantage</td><td>Sentry UE, identifiant pseudonyme</td><td>Corriger les plantages</td></tr>
+      <tr><td>Messages du chat iPhone et début de la conversation</td><td>OpenAI, par le relais du serveur de test (Supabase UE), qui ne les garde pas</td><td>Obtenir la réponse de l'assistant</td></tr>
+      <tr><td>Relevés d'usage iPhone (date, volume, verdict du filtre, sans contenu)</td><td>Serveur de test, Supabase UE</td><td>Tenir les limites du test et mesurer le coût</td></tr>
       <tr><td>Réponse signalée et ton message précédent (iPhone, seulement si tu signales)</td><td>Serveur de test, Supabase UE</td><td>Vérifier et corriger les réponses problématiques</td></tr>
       <tr><td>Mesures de fluidité (iPhone, sans texte)</td><td>Serveur de test, Supabase UE</td><td>Vérifier que l'app iPhone est fluide</td></tr>
     </tbody>
@@ -142,8 +146,14 @@
     <li>Tu peux aussi demander l'accès à tes données, leur correction ou leur export, et retirer ton consentement à tout moment, sans que cela touche à ce qui a été fait avant.</li>
   </ul>
 
-  <h2>Contact</h2>
-  <p>Pour toute question ou demande d'effacement, demande-le directement à la personne qui t'a invité au test : elle transmet à l'équipe, et l'effacement est fait sous 30 jours. Une adresse de contact dédiée sera publiée avant la version publique.</p>
+  <h2 id="contact">Contact</h2>
+  <p>Pour toute question, un problème ou une demande d'effacement :</p>
+  <ul>
+    <li>sur iPhone, dans l'app TestFlight : ouvre EatBuddy, puis « Envoyer un commentaire bêta » ; ou, dans EatBuddy, fais une capture d'écran et touche « Partager un commentaire bêta » ;</li>
+    <li>ou ouvre un ticket sur <a href="https://github.com/enzotrp974/enzotrp974.github.io/issues">la page GitHub de ce site</a> (publique : n'y mets ni donnée de santé ni information personnelle) ;</li>
+    <li>ou demande-le directement à la personne qui t'a invité au test : elle transmet à l'équipe.</li>
+  </ul>
+  <p>Les signalements de réponses sont lus sous 24 heures ; une demande d'effacement est traitée sous 30 jours. Une adresse de contact dédiée sera publiée avant la version publique.</p>
 
   <h2>Ce qui changera en v1</h2>
   <p>La version publique, plus tard, fonctionnera autrement. Cette page sera alors remplacée.</p>
