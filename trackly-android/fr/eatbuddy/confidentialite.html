@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Confidentialité du prototype EatBuddy</title>
-<meta name="description" content="Politique de confidentialité du prototype EatBuddy : ce qui reste sur le téléphone, ce qui part chez OpenAI, ce qui est enregistré pendant le test.">
+<meta name="description" content="Politique de confidentialité du prototype EatBuddy : tes deux accords, ce qui reste sur le téléphone, ce qui part chez OpenAI, ce qui est enregistré pendant le test, et comment tout effacer.">
 <meta name="color-scheme" content="light dark">
 <meta name="robots" content="noindex">
 <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
@@ -33,38 +33,52 @@
 <main id="main">
 <section class="legal" aria-labelledby="t">
   <h1 id="t">Confidentialité du prototype EatBuddy</h1>
-  <p class="fine">Application Android « EatBuddy » (identifiant <code>app.eatbuddy</code>), version de test. Mise à jour le 15 novembre 2026.</p>
+  <p class="fine">Application Android « EatBuddy » (identifiant <code>app.eatbuddy</code>), version de test 2. Mise à jour le 19 novembre 2026.</p>
 
-  <p>EatBuddy est pour l'instant un <strong>prototype</strong>, proposé à quelques testeurs (cinq au plus) sur invitation. Cette page dit, sans détour, où vont les données. EatBuddy n'envoie pas tout à un serveur, mais il ne garde pas non plus tout sur le téléphone : les paragraphes ci-dessous donnent la liste complète.</p>
+  <p>EatBuddy est pour l'instant un <strong>prototype</strong>, proposé à quelques testeurs sur invitation. Cette page dit, sans détour, où vont les données. Elle décrit ce que l'app Android peut garder sur ton téléphone et ce qu'elle peut envoyer pendant le test.</p>
 
   <h2>Qui peut utiliser EatBuddy</h2>
-  <p>EatBuddy est réservé aux personnes de <strong>18 ans et plus</strong>. L'app demande l'âge au premier lancement et s'arrête si la personne a moins de 18 ans.</p>
+  <p>EatBuddy est réservé aux personnes de <strong>18 ans et plus</strong>. Au premier lancement, l'app te demande ton âge et s'arrête si tu indiques moins de 18 ans. Si tu corriges ensuite ton âge à moins de 18 ans, EatBuddy passe en suivi simple, sans plan ni conseils pour adultes.</p>
 
   <h2>Pas un avis médical</h2>
   <p>EatBuddy n'est pas un avis médical. Les chiffres et les propositions de l'assistant peuvent être faux. Pour toute question de santé, parle-en à un professionnel.</p>
 
-  <h2>Ce qui est enregistré sur ton téléphone</h2>
-  <p>Ton journal (repas, produits, plats, poids, objectifs, mémoire de l'assistant, historique des conversations) est enregistré sur ton téléphone, dans le stockage privé de l'app. Il n'y a pas de compte et pas de synchronisation du journal avec un serveur.</p>
-  <p>Ce journal peut quand même quitter l'appareil par trois voies, qui sont les tiennes :</p>
+  <h2>Tes deux accords</h2>
+  <p>EatBuddy te demande deux accords. Ils sont séparés : l'un ne vaut pas pour l'autre. Aucune case n'est cochée d'avance.</p>
   <ul>
-    <li><strong>Sauvegarde automatique d'Android (Auto Backup)</strong>, activée par défaut : Android peut copier les données de l'app vers ton compte Google. La clé d'accès à l'IA en est exclue.</li>
-    <li><strong>Export et import</strong> d'un fichier, quand tu le décides.</li>
-    <li><strong>Google Drive</strong>, facultatif et désactivé par défaut : une copie de la base dans un dossier créé par l'app, avec la seule permission <code>drive.file</code> (elle ne voit que les fichiers de l'app).</li>
+    <li><strong>L'accord santé.</strong> Tu le donnes avec une case, au premier lancement. Il permet à EatBuddy d'utiliser ton âge, ta taille, ton poids, ton activité et tes allergies pour calculer ton plan et te conseiller. Tu peux dire non, ou le retirer plus tard.</li>
+    <li><strong>L'enregistrement du test pour l'équipe.</strong> Tu le donnes quand tu rejoins le test avec ton code testeur, avec la case « J'accepte l'enregistrement de mes conversations pendant le test ». Il permet à l'équipe de recevoir tes conversations, tes remarques et des relevés d'usage. Tu peux l'arrêter quand tu veux. Avec un code valide mais sans cette case, tu ne rejoins pas le test : l'IA reste fermée.</li>
   </ul>
 
-  <h2>Ce qui part chez OpenAI à chaque demande à l'assistant</h2>
-  <p>Chaque requête à l'assistant (chat, Activité, appel vocal, dictée, lecture de photo) envoie à OpenAI ton message ou ta photo, plus le contexte nécessaire à ce tour (par exemple les repas du jour et tes objectifs). L'assistant ne répondrait pas autrement.</p>
-  <p>Pendant le test, chaque testeur utilise une <strong>clé OpenAI qui lui est propre</strong>, liée à un projet OpenAI dédié avec une limite de dépense mensuelle. Cette clé est livrée à l'app par le serveur de test quand tu saisis ton code testeur ; elle est rangée dans le coffre de clés d'Android (Keystore) et exclue des sauvegardes. Elle peut être changée ou révoquée à distance. Le téléphone parle ensuite directement à OpenAI. Le <a href="https://openai.com/policies/privacy-policy/">traitement de ces données par OpenAI</a> relève de ses propres règles.</p>
+  <h2>Ce qui est enregistré sur ton téléphone</h2>
+  <p>Ton journal (repas, produits, plats, poids, objectifs, mémoire de l'assistant, historique des conversations) est enregistré sur ton téléphone, dans le stockage privé de l'app. Tu n'as pas de compte EatBuddy. Le code testeur ouvre seulement un accès sous un identifiant au hasard (voir plus bas).</p>
+  <p>Ce journal peut quand même quitter l'appareil par ces voies :</p>
+  <ul>
+    <li><strong>Sauvegarde automatique d'Android (Auto Backup)</strong>, activée par défaut : Android peut copier la base de l'app et certains réglages (ton accord santé compris) vers ton compte Google, ou les transférer vers un autre téléphone. La clé d'accès à l'IA et les jetons du test en sont exclus. Cette copie reste sur ton compte Google : tu la gères dans les réglages de sauvegarde de ton téléphone.</li>
+    <li><strong>Export et import</strong> d'un fichier, quand tu le décides.</li>
+    <li><strong>Google Drive</strong>, facultatif et désactivé par défaut : si tu l'actives, l'app copie sa base et certains réglages dans un dossier qu'elle crée, avec la seule permission <code>drive.file</code> (elle ne voit que les fichiers créés par l'app ou que tu lui donnes). Une option à part permet d'y copier aussi le journal de diagnostic.</li>
+  </ul>
+  <p>Le test, lui, envoie des données en plus : voir plus bas.</p>
+
+  <h2>Ce qui part chez OpenAI, et quand</h2>
+  <p>Des données partent chez OpenAI quand l'assistant travaille pour toi, une fois que tu as rejoint le test avec ton code : chat, Activité, appel vocal, dictée, lecture de photo. L'app peut aussi contacter OpenAI à l'ouverture du chat pour le préparer, après un appel pour le relire, ou pour proposer des noms de versions de plats.</p>
+  <p>Selon la fonction, ça peut être le texte que tu envoies, ta voix (dictée, appel) ou ta photo, plus le contexte nécessaire (par exemple les repas du jour, tes objectifs et les derniers échanges). Si tu as donné ton accord santé, ce contexte peut contenir des données de santé, comme ton poids ou tes allergies. Sans accord santé, EatBuddy retire ces champs du contexte. Mais ce que tu écris, dis ou photographies toi-même part tel quel, et un nom de plat peut aussi parler de santé.</p>
+  <p>Pendant le test, chaque testeur utilise une <strong>clé OpenAI qui lui est propre</strong>, liée à un projet OpenAI dédié avec une limite de dépense mensuelle. Cette clé est livrée à l'app par le serveur de test quand tu saisis ton code testeur ; elle est rangée dans un fichier privé chiffré avec le coffre de clés d'Android (Keystore), et exclue des sauvegardes. Elle peut être changée ou révoquée à distance. Le téléphone parle ensuite directement à OpenAI. Le traitement de ces données par OpenAI relève de ses propres règles : sa <a href="https://openai.com/policies/privacy-policy/">politique de confidentialité</a> et ses <a href="https://developers.openai.com/api/docs/guides/your-data">règles pour les données de l'API</a>.</p>
 
   <h2>Ce qui est enregistré sur le serveur de test</h2>
-  <p>Participer au test, c'est accepter qu'EatBuddy enregistre la façon dont tu l'utilises, pour trouver les problèmes et améliorer l'app. Tu l'acceptes explicitement au dernier écran du premier lancement, avant de saisir le code testeur. Voici ce qui est envoyé au serveur de test :</p>
+  <p>Participer au test, c'est accepter qu'EatBuddy enregistre la façon dont tu l'utilises, pour trouver les problèmes et améliorer l'app. Tu l'acceptes avec la case de l'enregistrement, au moment où tu rejoins le test. L'envoi de tes conversations commence à ce moment-là : ce qui a été écrit avant n'est pas envoyé. Avant, le serveur reçoit seulement ton code et un identifiant d'installation, pour vérifier le code. Voici ce qui est envoyé au serveur de test :</p>
   <ul>
-    <li><strong>Tes conversations</strong> avec l'assistant (chat, Activité, appel vocal) : ce qui est dit, les actions de l'assistant et leurs résultats, les cartes affichées et tes gestes, les erreurs, le modèle utilisé, les délais et le coût. L'envoi a lieu une fois par jour.</li>
-    <li><strong>Tes remarques</strong> envoyées avec le bouton « Remarque » ou « Signaler un problème », avec l'écran concerné, la version de l'app et le dernier échange.</li>
+    <li><strong>Tes conversations</strong> avec l'assistant (chat, Activité, appel vocal) : ce qui est dit, les actions de l'assistant et leurs résultats, les cartes affichées et tes gestes, les erreurs, le modèle utilisé, les délais et le coût. L'envoi est prévu une fois par jour et reprend si le réseau manque. Après un appel, des mesures sans texte (durée, délais) peuvent aussi partir.</li>
+    <li><strong>Tes remarques</strong> envoyées avec le bouton « Remarque » ou « Signaler un problème » : l'app les envoie dès que possible, avec l'écran concerné, la version de l'app et, quand il peut être joint, un extrait de l'échange. Si l'envoi échoue, elle réessaie plus tard.</li>
     <li><strong>Des relevés d'usage</strong> (testeur, fonction, modèle, volume), sans contenu, pour calculer le coût de chaque testeur.</li>
   </ul>
   <p><strong>Jamais envoyés à ce serveur : tes photos et ta clé d'accès à l'IA.</strong> Comme tes conversations peuvent mentionner ton poids, ton âge ou tes allergies, elles peuvent contenir des données de santé.</p>
-  <p>Le serveur de test est hébergé chez Supabase, dans l'Union européenne. Les conversations sont conservées pendant le test et <strong>effacées au plus tard 90 jours après sa fin</strong>. Tu peux demander leur effacement à tout moment, ou quitter le test (voir « Tes droits »).</p>
+  <p>Tout est lié à un identifiant tiré au hasard, pas à ton nom. Si tu écris ton nom dans un message ou une remarque, ce texte part avec le reste.</p>
+  <p>Tu peux arrêter l'enregistrement à tout moment. Les nouveaux envois s'arrêtent ; ce qui est déjà parti reste sur le serveur jusqu'à son effacement. Tes échanges avec EatBuddy continuent. Si tu reprends l'enregistrement, seul ce qui est écrit après la reprise part.</p>
+  <p>Le serveur de test est hébergé chez Supabase, dans l'Union européenne. Les conversations sont conservées pendant le test et <strong>effacées au plus tard 90 jours après sa fin</strong> : une purge passe chaque jour. Tu peux demander leur effacement à tout moment, ou quitter le test (voir « Tes droits »).</p>
+
+  <h2>Le mode sans IA</h2>
+  <p>Sans code testeur, EatBuddy reste en mode manuel : tu notes tes repas toi-même, et rien n'est envoyé à OpenAI ni à l'équipe du test. Avec un code, quand tu ajoutes un repas « sans IA », rien n'est envoyé à OpenAI non plus. Les sauvegardes d'Android et de Drive suivent tes réglages, comme plus haut.</p>
 
   <h2>Version iPhone (test de fluidité)</h2>
   <p>La première version iPhone sert surtout à vérifier que l'app est fluide. Elle envoie moins de choses que la version Android :</p>
@@ -79,21 +93,36 @@
 
   <h2>Statistiques et rapports de plantage</h2>
   <ul>
-    <li><strong>PostHog</strong> (hébergement dans l'Union européenne) : statistiques d'usage de l'app (écrans du premier lancement, fonctions utilisées, annulations).</li>
-    <li><strong>Sentry</strong> (hébergement dans l'Union européenne) : rapports de plantage et d'erreurs.</li>
+    <li><strong>PostHog</strong> (hébergement dans l'Union européenne) : statistiques d'usage de l'app (écrans, fonctions utilisées, annulations). Selon la version de test, il peut ne pas être activé.</li>
+    <li><strong>Sentry</strong> (hébergement dans l'Union européenne) : rapports de plantage et d'erreurs, si la version que tu as installée l'utilise.</li>
   </ul>
-  <p>Les deux sont liés à un <strong>identifiant de testeur pseudonyme</strong> (un code, pas ton nom ni ton e-mail). Il n'y a pas de publicité, et aucun pisteur publicitaire.</p>
+  <p>Les deux sont liés à un <strong>identifiant de testeur pseudonyme</strong> (pas ton code, ni ton nom, ni ton e-mail) et ne reçoivent aucun texte de conversation. Ils démarrent seulement après ton adhésion au test, avec ton accord d'enregistrement. Il n'y a pas de publicité, et aucun pisteur publicitaire.</p>
 
-  <h2>Données de santé et consentement</h2>
-  <p>Ton âge, ta taille, ton poids, ton niveau d'activité et, le cas échéant, tes allergies sont des données de santé. EatBuddy ne les utilise pour calculer ton plan qu'après ton <strong>consentement</strong>, donné par une case que tu coches toi-même (écran 10 du premier lancement). Si tu refuses, l'app fonctionne en simple suivi de ce que tu manges, sans plan chiffré, et ces questions sautent. Tu peux changer d'avis dans les réglages.</p>
+  <h2>Données de santé : donner et retirer ton accord</h2>
+  <p>Ton âge, ta taille, ton poids, ton niveau d'activité et, le cas échéant, tes allergies sont des données de santé. EatBuddy ne les utilise pour calculer ton plan qu'après ton accord santé, donné par une case que tu coches toi-même. Si tu refuses, l'app fonctionne en simple suivi de ce que tu manges, sans plan chiffré : les questions de taille, de poids et d'activité sautent. EatBuddy te demande quand même ton âge, et peut te demander ce que tu évites de manger.</p>
+  <p>Tu peux retirer cet accord à tout moment : Réglages → Mon EatBuddy → « Tes données et tes accords ». Voici ce qui se passe :</p>
+  <ul>
+    <li><strong>Sur ton téléphone,</strong> EatBuddy efface de ton profil l'âge, la taille, le poids, l'activité, une éventuelle grossesse ou un suivi médical, tes allergies, ton objectif de poids et les chiffres de ton plan, y compris leurs anciennes versions.</li>
+    <li>Il efface aussi <strong>ta conversation avec EatBuddy</strong> (le chat principal et ses cartes), le journal de diagnostic, la dernière transcription d'appel, les relectures d'appel en attente, les copies d'avant mise à jour et la file d'envoi du test.</li>
+    <li>Restent sur ton téléphone : tes repas, tes pesées déjà notées au journal, tes goûts, ton sport et tes anciens bilans.</li>
+    <li><strong>Ensuite,</strong> EatBuddy ne joint plus tes données de santé au contexte envoyé à OpenAI. Les envois du test qui attendaient d'avant le retrait sont abandonnés, et ce que tu disais avant ne part pas au serveur de test.</li>
+    <li>Si une étape de l'effacement échoue, l'accord peut rester affiché comme actif et une partie des données peut déjà être effacée. L'app reprend l'effacement à la prochaine ouverture, et tu peux réessayer.</li>
+  </ul>
+  <p>Ce que le retrait ne peut pas faire :</p>
+  <ul>
+    <li>Reprendre ce que le serveur de test a déjà reçu. Ces copies sont effacées sur demande, ou au plus tard 90 jours après la fin du test.</li>
+    <li>Supprimer une sauvegarde déjà envoyée sur ton compte Google ou sur Drive, ni un fichier que tu as déjà exporté. Tu les gères toi-même (voir plus bas).</li>
+    <li>Reprendre ce que tu écris, dis ou photographies toi-même après le retrait : cela part comme n'importe quel message, de même qu'un ancien brouillon que tu enverrais.</li>
+    <li>Couper un appel vocal déjà ouvert : il peut garder ce qu'il savait avant le retrait. Raccroche, puis rappelle.</li>
+  </ul>
 
   <h2>Récapitulatif</h2>
   <table>
     <thead><tr><th scope="col">Donnée</th><th scope="col">Où</th><th scope="col">Pourquoi</th></tr></thead>
     <tbody>
       <tr><td>Journal, objectifs, mémoire</td><td>Ton téléphone ; sauvegarde Android, export, Drive si tu l'actives</td><td>Faire fonctionner l'app</td></tr>
-      <tr><td>Message ou photo + contexte du tour</td><td>OpenAI (clé propre au testeur)</td><td>Obtenir la réponse de l'assistant</td></tr>
-      <tr><td>Conversations, remarques, relevés d'usage (jamais de photo ni de clé)</td><td>Serveur de test, Supabase UE</td><td>Trouver les problèmes, mesurer le coût, améliorer l'app</td></tr>
+      <tr><td>Message, voix ou photo + contexte (avec tes données de santé seulement si tu as donné l'accord santé)</td><td>OpenAI (clé propre au testeur)</td><td>Obtenir la réponse de l'assistant</td></tr>
+      <tr><td>Conversations, remarques, relevés d'usage (seulement avec l'accord d'enregistrement ; jamais de photo ni de clé)</td><td>Serveur de test, Supabase UE</td><td>Trouver les problèmes, mesurer le coût, améliorer l'app</td></tr>
       <tr><td>Statistiques d'usage</td><td>PostHog UE, identifiant pseudonyme</td><td>Comprendre l'usage</td></tr>
       <tr><td>Rapports de plantage</td><td>Sentry UE, identifiant pseudonyme</td><td>Corriger les plantages</td></tr>
       <tr><td>Réponse signalée et ton message précédent (iPhone, seulement si tu signales)</td><td>Serveur de test, Supabase UE</td><td>Vérifier et corriger les réponses problématiques</td></tr>
@@ -103,8 +132,13 @@
 
   <h2>Tes droits et comment effacer tes données</h2>
   <ul>
-    <li><strong>Sur le téléphone :</strong> désinstaller l'app efface le journal local. Les sauvegardes Android se gèrent dans les réglages Google de ton téléphone ; celles de Drive se suppriment dans le dossier créé par l'app.</li>
-    <li><strong>Sur le serveur de test :</strong> demande l'effacement de tes conversations, remarques et relevés à tout moment, ou quitte le test ; ta clé est alors révoquée. Tout est effacé au plus tard 90 jours après la fin du test, même sans demande.</li>
+    <li><strong>Tout effacer et quitter le test :</strong> dans Réglages → Accès EatBuddy, touche « Tout effacer et quitter le test », puis confirme. Le serveur de test efface ce que tu as envoyé et ferme ton accès. L'app retire de ton téléphone la clé d'accès à l'IA et le jeton du test, efface le journal de diagnostic du test et sa file d'envoi, et arrête la collecte. Tes repas, tes réglages et ton historique de conversation restent. La clé est ensuite révoquée par l'équipe.</li>
+    <li>Si la demande échoue (réseau, serveur), réessaie. Si le serveur refuse ton accès parce qu'il était déjà coupé, l'app nettoie les données du test sur ton téléphone mais ne peut pas prouver l'effacement chez nous : dis-le à la personne qui t'a invité.</li>
+    <li><strong>Arrêter l'enregistrement :</strong> au même endroit, « Arrêter l'enregistrement ». Les nouveaux envois à l'équipe s'arrêtent, et tes échanges avec EatBuddy continuent.</li>
+    <li><strong>Retirer l'accord santé :</strong> voir plus haut. Ta conversation est effacée du téléphone.</li>
+    <li><strong>Copies déjà reçues par le serveur de test :</strong> elles sont effacées si tu le demandes, ou au plus tard 90 jours après la fin du test, même sans demande.</li>
+    <li><strong>Sauvegarde Android et Drive :</strong> elles restent sur ton compte Google. Tu les gères dans les réglages de sauvegarde de ton téléphone et dans ton Drive (supprime les anciens fichiers du dossier EatBuddy, puis vide la corbeille). EatBuddy ne peut pas les effacer pour toi. Une nouvelle sauvegarde reprend la base après nettoyage, avec ce qui reste sur ton téléphone, comme tes pesées du journal.</li>
+    <li><strong>Désinstaller l'app</strong> efface le journal local. Si la sauvegarde Android est active, Android peut le restaurer à la réinstallation.</li>
     <li>Tu peux aussi demander l'accès à tes données, leur correction ou leur export, et retirer ton consentement à tout moment, sans que cela touche à ce qui a été fait avant.</li>
   </ul>
 
