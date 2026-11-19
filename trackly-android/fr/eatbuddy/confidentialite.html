@@ -33,9 +33,9 @@
 <main id="main">
 <section class="legal" aria-labelledby="t">
   <h1 id="t">Confidentialité du prototype EatBuddy</h1>
-  <p class="fine">Application « EatBuddy » (identifiant <code>app.eatbuddy</code>) : Android, version de test 2.1, et iPhone (TestFlight). Mise à jour le 19 novembre 2026.</p>
+  <p class="fine">Application « EatBuddy » (identifiant <code>app.eatbuddy</code>) : Android, version de test 2.1, et iPhone, version de test 0.2.0 (TestFlight). Mise à jour le 19 novembre 2026.</p>
 
-  <p>EatBuddy est pour l'instant un <strong>prototype</strong>, proposé à quelques testeurs sur invitation. Cette page dit, sans détour, où vont les données. Elle décrit ce que l'app Android peut garder sur ton téléphone et ce qu'elle peut envoyer pendant le test.</p>
+  <p>EatBuddy est pour l'instant un <strong>prototype</strong>, proposé à quelques testeurs sur invitation. Cette page dit, sans détour, où vont les données. Elle décrit ce que l'app peut garder sur ton téléphone et ce qu'elle peut envoyer pendant le test. L'app iPhone 0.2.0 est la même que l'app Android de test : tout ce qui suit vaut pour les deux, et ce qui change sur iPhone est réuni dans <a href="#iphone">la section « Version iPhone »</a>.</p>
 
   <h2>Qui peut utiliser EatBuddy</h2>
   <p>EatBuddy est réservé aux personnes de <strong>18 ans et plus</strong>. Au premier lancement, l'app te demande ton âge et s'arrête si tu indiques moins de 18 ans. Si tu corriges ensuite ton âge à moins de 18 ans, EatBuddy passe en suivi simple, sans plan ni conseils pour adultes.</p>
@@ -52,7 +52,7 @@
 
   <h2>Ce qui est enregistré sur ton téléphone</h2>
   <p>Ton journal (repas, produits, plats, poids, objectifs, mémoire de l'assistant, historique des conversations) est enregistré sur ton téléphone, dans le stockage privé de l'app. Tu n'as pas de compte EatBuddy. Le code testeur ouvre seulement un accès sous un identifiant au hasard (voir plus bas).</p>
-  <p>Ce journal peut quand même quitter l'appareil par ces voies :</p>
+  <p>Sur Android, ce journal peut quand même quitter l'appareil par ces voies (aucune n'existe sur iPhone : voir <a href="#iphone">« Version iPhone »</a>) :</p>
   <ul>
     <li><strong>Sauvegarde automatique d'Android (Auto Backup)</strong>, activée par défaut : Android peut copier la base de l'app et certains réglages (ton accord santé compris) vers ton compte Google, ou les transférer vers un autre téléphone. Le jeton d'accès du test en est exclu. Cette copie reste sur ton compte Google : tu la gères dans les réglages de sauvegarde de ton téléphone.</li>
     <li><strong>Export et import</strong> d'un fichier, quand tu le décides.</li>
@@ -61,9 +61,9 @@
   <p>Le test, lui, envoie des données en plus : voir plus bas.</p>
 
   <h2>Ce qui part chez OpenAI, et quand</h2>
-  <p>Des données partent chez OpenAI quand l'assistant travaille pour toi, une fois que tu as rejoint le test avec ton code : chat, Activité, appel vocal, dictée, lecture de photo. L'app peut aussi contacter OpenAI à l'ouverture du chat pour le préparer, après un appel pour le relire, ou pour proposer des noms de versions de plats.</p>
+  <p>Des données partent chez OpenAI quand l'assistant travaille pour toi, une fois que tu as rejoint le test avec ton code : chat, Activité, appel vocal (Android seulement), dictée, lecture de photo. L'app peut aussi contacter OpenAI à l'ouverture du chat pour le préparer, après un appel pour le relire, ou pour proposer des noms de versions de plats.</p>
   <p>Selon la fonction, ça peut être le texte que tu envoies, ta voix (dictée, appel) ou ta photo, plus le contexte nécessaire (par exemple les repas du jour, tes objectifs et les derniers échanges). Si tu as donné ton accord santé, ce contexte peut contenir des données de santé, comme ton poids ou tes allergies. Sans accord santé, EatBuddy retire ces champs du contexte. Mais ce que tu écris, dis ou photographies toi-même part tel quel, et un nom de plat peut aussi parler de santé.</p>
-  <p>Depuis la version de test 2.1, <strong>aucune clé OpenAI n'est envoyée au téléphone</strong>. Quand tu saisis ton code testeur, le serveur de test donne à l'app un <strong>jeton d'accès</strong> lié à un identifiant tiré au hasard pour cette installation. Il est rangé dans un fichier privé chiffré avec le coffre de clés d'Android (Keystore), exclu des sauvegardes, et peut être retiré à distance. Tes messages, tes photos et ta voix (dictée), avec le contexte utile à la réponse, passent alors par <strong>notre serveur de test (Supabase, Union européenne)</strong>, qui les transmet à OpenAI et te renvoie la réponse. Ce relais <strong>ne garde ni tes messages, ni tes photos, ni ta voix, ni les réponses</strong> : il ne conserve qu'un relevé d'usage sans contenu (date, modèle, volume, coût), pour tenir la limite de dépense de chaque testeur. Ton message et la réponse passent aussi par le filtre de contenu d'OpenAI (modération). L'appel vocal n'est pas disponible par ce relais pour l'instant. Le traitement de ces données par OpenAI relève de ses propres règles : sa <a href="https://openai.com/policies/privacy-policy/">politique de confidentialité</a> et ses <a href="https://developers.openai.com/api/docs/guides/your-data">règles pour les données de l'API</a>.</p>
+  <p>Depuis la version de test 2.1, <strong>aucune clé OpenAI n'est envoyée au téléphone</strong>. Quand tu saisis ton code testeur, le serveur de test donne à l'app un <strong>jeton d'accès</strong> lié à un identifiant tiré au hasard pour cette installation. Sur Android, il est rangé dans un fichier privé chiffré avec le coffre de clés d'Android (Keystore), exclu des sauvegardes ; sur iPhone, dans le Trousseau d'iOS (voir plus bas). Dans les deux cas, il peut être retiré à distance. Tes messages, tes photos et ta voix (dictée), avec le contexte utile à la réponse, passent alors par <strong>notre serveur de test (Supabase, Union européenne)</strong>, qui les transmet à OpenAI et te renvoie la réponse. Ce relais <strong>ne garde ni tes messages, ni tes photos, ni ta voix, ni les réponses</strong> : il ne conserve qu'un relevé d'usage sans contenu (date, modèle, volume, coût), pour tenir la limite de dépense de chaque testeur. Ton message et la réponse passent aussi par le filtre de contenu d'OpenAI (modération). L'appel vocal n'est pas disponible par ce relais pour l'instant. Le traitement de ces données par OpenAI relève de ses propres règles : sa <a href="https://openai.com/policies/privacy-policy/">politique de confidentialité</a> et ses <a href="https://developers.openai.com/api/docs/guides/your-data">règles pour les données de l'API</a>.</p>
 
   <h2>Ce qui est enregistré sur le serveur de test</h2>
   <p>Participer au test, c'est accepter qu'EatBuddy enregistre la façon dont tu l'utilises, pour trouver les problèmes et améliorer l'app. Tu l'acceptes avec la case de l'enregistrement, au moment où tu rejoins le test. L'envoi de tes conversations commence à ce moment-là : ce qui a été écrit avant n'est pas envoyé. Avant, le serveur reçoit seulement ton code et un identifiant d'installation, pour vérifier le code. Voici ce qui est envoyé au serveur de test :</p>
@@ -80,20 +80,59 @@
   <h2>Le mode sans IA</h2>
   <p>Sans code testeur, EatBuddy reste en mode manuel : tu notes tes repas toi-même, et rien n'est envoyé à OpenAI ni à l'équipe du test. Avec un code, quand tu ajoutes un repas « sans IA », rien n'est envoyé à OpenAI non plus. Les sauvegardes d'Android et de Drive suivent tes réglages, comme plus haut.</p>
 
-  <h2 id="iphone">Version iPhone (test privé)</h2>
-  <p>La version iPhone est plus simple que la version Android : un chat avec EatBuddy. Elle envoie moins de choses :</p>
+  <h2 id="iphone">Version iPhone (0.2.0, test privé)</h2>
+  <p>L'app iPhone est la même que l'app Android de test : mêmes écrans, mêmes deux accords, mêmes traitements. Tout ce que cette page dit de l'âge, de l'avis médical, du journal sur ton téléphone, de ce qui part chez OpenAI, de ce qui est enregistré sur le serveur de test, du mode sans IA, des données de santé et de tes droits vaut donc aussi pour l'iPhone. Voici ce qui change.</p>
+
+  <h3>Ce qui n'existe pas sur iPhone</h3>
   <ul>
-    <li>Au premier lancement, l'app te demande ton <strong>accord explicite</strong> avant d'envoyer quoi que ce soit à OpenAI. Sans cet accord, rien n'est envoyé. Tu le retires dans Réglages › Quitter le test.</li>
-    <li><strong>Pas de code ni de compte.</strong> Après ton accord, l'app obtient du serveur de test un jeton d'accès lié à un identifiant tiré au hasard pour cet iPhone. Ce jeton et cet identifiant sont gardés dans le Trousseau de l'iPhone, sans synchronisation iCloud. <strong>Aucune clé OpenAI n'est envoyée à l'iPhone.</strong></li>
-    <li>Tes messages, avec le début de la conversation, passent par <strong>notre serveur de test (Supabase, Union européenne)</strong>, qui les transmet à OpenAI pour obtenir la réponse et te la renvoie. Ce relais <strong>ne garde ni tes messages ni les réponses</strong> et ne les écrit dans aucun journal. Ton message, puis la réponse terminée, passent aussi par le filtre de contenu d'OpenAI (modération) : une demande refusée par ce filtre ne part pas au modèle, et une réponse refusée ou non vérifiée est masquée. Les messages ne sont pas encore enregistrés sur le téléphone : la conversation s'efface quand l'app se ferme.</li>
-    <li>Pour tenir les limites du test et son coût, le serveur note, pour chaque message, la date, le nombre de jetons (volume de texte) et le verdict du filtre, <strong>sans le contenu</strong>. Si tu quittes le test, ces relevés sont détachés de ton identifiant (ils ne disent plus rien de toi) ; ils sont effacés au plus tard 90 jours après.</li>
-    <li>Si tu <strong>signales une réponse</strong> (appui long sur la réponse, puis « Signaler »), cette réponse et ton message juste avant (500 caractères au plus chacun) sont envoyés au serveur de test pour que l'équipe les vérifie. Rien d'autre de la conversation.</li>
-    <li>Le serveur de test reçoit aussi des <strong>mesures de fluidité</strong> : durée d'affichage des images pendant le défilement, nombre de saccades, temps de démarrage, modèle d'iPhone, version d'iOS et de l'app, version d'affichage du chat choisie. Aucun texte de conversation.</li>
-    <li>Quitter le test (Réglages › Quitter le test et effacer mes données) ferme ton accès tout de suite et efface ce que tu as envoyé au serveur de test (signalements, mesures) et détache de toi les relevés d'usage. Sans réseau, l'effacement est refait au lancement suivant.</li>
-    <li>Pas de PostHog ni de Sentry sur iPhone pour l'instant.</li>
+    <li><strong>La sauvegarde automatique d'Android et Google Drive</strong> : l'iPhone n'envoie ton journal ni à Google ni nulle part ailleurs de lui-même, et il n'y a pas de « Récupérer mon EatBuddy » depuis une copie.</li>
+    <li><strong>La clé OpenAI personnelle</strong>, l'<strong>appel vocal</strong> et la <strong>dictée en direct</strong> (la dictée marche après l'arrêt seulement).</li>
+    <li><strong>PostHog et Sentry</strong> : aucune statistique d'usage ni aucun rapport de plantage n'est envoyé à un service tiers.</li>
   </ul>
 
-  <h2>Statistiques et rapports de plantage</h2>
+  <h3>Sur ton iPhone</h3>
+  <ul>
+    <li>Ton journal, tes réglages, le journal de diagnostic et les vignettes de plats sont dans le stockage privé de l'app. L'app les <strong>exclut de la sauvegarde iCloud et de la sauvegarde de ton ordinateur</strong> : ils ne quittent pas l'iPhone par ces voies.</li>
+    <li>Le jeton d'accès du test et l'identifiant d'installation tiré au hasard sont gardés dans le <strong>Trousseau d'iOS</strong>, réservé à cet iPhone : pas de synchronisation iCloud, pas de passage vers un autre appareil. <strong>Aucune clé OpenAI n'y est jamais.</strong> Désinstaller l'app efface ses fichiers, mais iOS peut garder cette entrée du Trousseau : pour la retirer, quitte d'abord le test (Réglages → Accès EatBuddy → « Tout effacer et quitter le test »).</li>
+    <li>Les photos de repas : l'image prise avec l'appareil photo est écrite dans le cache privé de l'app (jamais dans ta photothèque) et supprimée dès qu'elle a été lue. Avant l'envoi, l'app la <strong>réduit et la réenregistre</strong> : le lieu et les autres informations jointes par l'appareil photo ne sont pas envoyés. Une petite vignette de plat reste sur ton iPhone, seulement si tu en choisis une pour un plat.</li>
+    <li>Le son de la dictée est enregistré en mémoire le temps que tu parles et n'est jamais écrit dans un fichier. Quand tu arrêtes, il part une fois pour être écrit en texte, puis il est jeté.</li>
+  </ul>
+
+  <h3>Les autorisations d'iOS</h3>
+  <ul>
+    <li><strong>Appareil photo</strong> : demandé la première fois que tu prends un repas en photo. Sans lui, tu peux encore choisir une photo de ta photothèque ou écrire ton repas.</li>
+    <li><strong>Photothèque</strong> : aucune autorisation. L'app utilise le sélecteur de photos d'iOS : elle ne voit que les photos que tu choisis, et jamais le reste de ta photothèque.</li>
+    <li><strong>Micro</strong> : demandé la première fois que tu dictes un message. Sans lui, tu peux écrire.</li>
+    <li><strong>Notifications</strong> : facultatives, demandées quand tu actives un rappel (bilan, « Me prévenir ») ou touches l'alerte « notifications coupées ». Elles sont créées sur l'iPhone par l'app : aucune ne passe par un serveur, et l'app ne s'enregistre pas auprès du service de notifications d'Apple. Une notification discrète peut t'avertir qu'une réponse est prête quand l'app est en arrière-plan.</li>
+    <li><strong>Lien d'invitation</strong> : l'app ouvre les liens <code>eatbuddy://rejoindre?code=…</code>, qui ne font que déposer le code testeur dans le champ du code, sans rien valider ni envoyer.</li>
+  </ul>
+
+  <h3>Le relais du serveur de test</h3>
+  <ul>
+    <li><strong>Aucune clé OpenAI n'est dans l'app ni sur l'iPhone.</strong> La clé reste sur notre serveur de test (Supabase, Union européenne), qui ne laisse passer que les fonctions de l'app (chat, dictée, lecture de photo), avec une liste fermée de modèles et d'outils.</li>
+    <li>Pour l'utiliser, il faut un <strong>code testeur nommé</strong> (le prénom de la personne invitée), échangé contre un jeton d'accès : au plus 3 installations par code. Sans code, l'app marche en <a href="#sans-ia">mode sans IA</a> et rien ne part.</li>
+    <li>Tes messages, tes photos et ta voix, avec le contexte utile à la réponse, passent par ce relais, qui les transmet à OpenAI et te renvoie la réponse. Le relais <strong>ne garde ni messages, ni photos, ni voix, ni réponses</strong> et ne les écrit dans aucun journal. Il demande à OpenAI de ne pas les stocker (<code>store: false</code>) ; ce qu'OpenAI garde malgré tout (par exemple pour lutter contre les abus) suit <a href="https://developers.openai.com/api/docs/guides/your-data">ses propres règles</a>.</li>
+    <li>Ton texte (et ta photo, ou le texte dicté) passe par le filtre de contenu d'OpenAI avant le modèle : une demande refusée n'est pas envoyée au modèle. La réponse terminée passe aussi par ce filtre : refusée ou non vérifiée, elle est remplacée par une phrase fixe.</li>
+    <li>Le serveur tient seulement un <strong>relevé d'usage en chiffres</strong>, un par testeur : date, modèle, volume de texte, coût, verdict du filtre, <strong>sans contenu</strong>. Il sert à tenir la limite de dépense de chaque testeur. Si tu quittes le test, ces relevés sont détachés de ton identifiant (ils ne disent plus rien de toi). Chaque relevé est de toute façon effacé 90 jours après sa date.</li>
+  </ul>
+
+  <h3>Ce que l'équipe reçoit (avec l'accord d'enregistrement)</h3>
+  <p>Comme sur Android, et seulement si tu as coché « J'accepte l'enregistrement de mes conversations pendant le test » en rejoignant le test : tes <strong>conversations</strong> (journal), tes <strong>remarques</strong> (bouton « Remarque »), tes <strong>signalements</strong>, des <strong>relevés d'usage</strong> et le <strong>journal de plantage</strong>. Jamais tes photos ni ton jeton.</p>
+  <ul>
+    <li><strong>Signaler une réponse</strong> : appui long sur une réponse d'EatBuddy, puis « Signaler un problème », avec une note facultative. Le signalement part tout de suite à l'équipe, avec la note et un extrait de l'échange ; l'équipe le lit sous 24 heures.</li>
+    <li><strong>Plantage</strong> : si l'app plante, elle écrit un petit fichier local (type d'erreur et pile technique, avec le message d'erreur du système ; les clés et les photos en sont retirées comme dans le reste du journal). Il est versé au journal au lancement suivant, puis envoyé avec lui.</li>
+    <li>Le journal ajoute la version de l'app et la <strong>version majeure d'iOS</strong>, mais ni le modèle de ton iPhone ni aucun identifiant publicitaire.</li>
+    <li>Rien de tout cela ne part sans l'accord d'enregistrement. Hors test (mode sans IA), une remarque ou un signalement reste sur ton iPhone.</li>
+  </ul>
+
+  <h3 id="sans-ia">Le mode sans IA sur iPhone</h3>
+  <p>Sans code testeur, ou si tu choisis « Continuer sans le test », l'app marche en mode manuel : tu notes tes repas toi-même (« Ajouter sans IA »), ton journal et ton plan restent sur l'iPhone, et <strong>rien n'est envoyé</strong> à OpenAI, au relais ni à l'équipe. Tu peux entrer ton code plus tard dans Réglages → Accès EatBuddy.</p>
+
+  <h3>Moins de 18 ans</h3>
+  <p>Si tu indiques moins de 18 ans, l'app s'arrête sur un écran qui te dit qu'EatBuddy est réservé aux adultes, sans rien garder de tes réponses. Une app iPhone ne peut pas se fermer toute seule : tu la fermes avec le geste d'iOS.</p>
+
+  <h2>Statistiques et rapports de plantage (Android seulement)</h2>
+  <p>Sur iPhone, il n'y a ni PostHog ni Sentry (voir <a href="#iphone">« Version iPhone »</a>).</p>
   <ul>
     <li><strong>PostHog</strong> (hébergement dans l'Union européenne) : statistiques d'usage de l'app (écrans, fonctions utilisées, annulations). Selon la version de test, il peut ne pas être activé.</li>
     <li><strong>Sentry</strong> (hébergement dans l'Union européenne) : rapports de plantage et d'erreurs, si la version que tu as installée l'utilise.</li>
@@ -122,15 +161,12 @@
   <table>
     <thead><tr><th scope="col">Donnée</th><th scope="col">Où</th><th scope="col">Pourquoi</th></tr></thead>
     <tbody>
-      <tr><td>Journal, objectifs, mémoire</td><td>Ton téléphone ; sauvegarde Android, export, Drive si tu l'actives</td><td>Faire fonctionner l'app</td></tr>
-      <tr><td>Message, voix ou photo + contexte (avec tes données de santé seulement si tu as donné l'accord santé)</td><td>OpenAI, par le relais du serveur de test (Supabase UE), qui ne les garde pas</td><td>Obtenir la réponse de l'assistant</td></tr>
+      <tr><td>Journal, objectifs, mémoire</td><td>Ton téléphone (iPhone : exclu d'iCloud et des sauvegardes) ; sur Android : sauvegarde Android, export, Drive si tu l'actives</td><td>Faire fonctionner l'app</td></tr>
+      <tr><td>Message, voix ou photo + contexte, sur Android comme sur iPhone (avec tes données de santé seulement si tu as donné l'accord santé)</td><td>OpenAI, par le relais du serveur de test (Supabase UE), qui ne les garde pas</td><td>Obtenir la réponse de l'assistant</td></tr>
       <tr><td>Conversations, remarques, relevés d'usage (seulement avec l'accord d'enregistrement ; jamais de photo ni de clé)</td><td>Serveur de test, Supabase UE</td><td>Trouver les problèmes, mesurer le coût, améliorer l'app</td></tr>
-      <tr><td>Statistiques d'usage</td><td>PostHog UE, identifiant pseudonyme</td><td>Comprendre l'usage</td></tr>
-      <tr><td>Rapports de plantage</td><td>Sentry UE, identifiant pseudonyme</td><td>Corriger les plantages</td></tr>
-      <tr><td>Messages du chat iPhone et début de la conversation</td><td>OpenAI, par le relais du serveur de test (Supabase UE), qui ne les garde pas</td><td>Obtenir la réponse de l'assistant</td></tr>
-      <tr><td>Relevés d'usage iPhone (date, volume, verdict du filtre, sans contenu)</td><td>Serveur de test, Supabase UE</td><td>Tenir les limites du test et mesurer le coût</td></tr>
-      <tr><td>Réponse signalée et ton message précédent (iPhone, seulement si tu signales)</td><td>Serveur de test, Supabase UE</td><td>Vérifier et corriger les réponses problématiques</td></tr>
-      <tr><td>Mesures de fluidité (iPhone, sans texte)</td><td>Serveur de test, Supabase UE</td><td>Vérifier que l'app iPhone est fluide</td></tr>
+      <tr><td>Statistiques d'usage (Android seulement)</td><td>PostHog UE, identifiant pseudonyme</td><td>Comprendre l'usage</td></tr>
+      <tr><td>Rapports de plantage</td><td>Android : Sentry UE, identifiant pseudonyme. iPhone : fichier local versé au journal du test (Supabase UE)</td><td>Corriger les plantages</td></tr>
+      <tr><td>Relevé d'usage du relais, Android 2.1 et iPhone (date, modèle, volume, coût, verdict du filtre, sans contenu)</td><td>Serveur de test, Supabase UE</td><td>Tenir les limites du test et mesurer le coût</td></tr>
     </tbody>
   </table>
 
@@ -141,14 +177,15 @@
     <li><strong>Arrêter l'enregistrement :</strong> au même endroit, « Arrêter l'enregistrement ». Les nouveaux envois à l'équipe s'arrêtent, et tes échanges avec EatBuddy continuent.</li>
     <li><strong>Retirer l'accord santé :</strong> voir plus haut. Ta conversation est effacée du téléphone.</li>
     <li><strong>Copies déjà reçues par le serveur de test :</strong> elles sont effacées si tu le demandes, ou au plus tard 90 jours après la fin du test, même sans demande.</li>
-    <li><strong>Sauvegarde Android et Drive :</strong> elles restent sur ton compte Google. Tu les gères dans les réglages de sauvegarde de ton téléphone et dans ton Drive (supprime les anciens fichiers du dossier EatBuddy, puis vide la corbeille). EatBuddy ne peut pas les effacer pour toi. Une nouvelle sauvegarde reprend la base après nettoyage, avec ce qui reste sur ton téléphone, comme tes pesées du journal.</li>
-    <li><strong>Désinstaller l'app</strong> efface le journal local. Si la sauvegarde Android est active, Android peut le restaurer à la réinstallation.</li>
+    <li><strong>Sauvegarde Android et Drive (Android seulement) :</strong> elles restent sur ton compte Google. Tu les gères dans les réglages de sauvegarde de ton téléphone et dans ton Drive (supprime les anciens fichiers du dossier EatBuddy, puis vide la corbeille). EatBuddy ne peut pas les effacer pour toi. Une nouvelle sauvegarde reprend la base après nettoyage, avec ce qui reste sur ton téléphone, comme tes pesées du journal.</li>
+    <li><strong>Désinstaller l'app</strong> efface le journal local. Si la sauvegarde Android est active, Android peut le restaurer à la réinstallation. Sur iPhone, rien n'est restauré par iCloud, mais iOS peut garder l'entrée du Trousseau (jeton du test) : quitte d'abord le test.</li>
     <li>Tu peux aussi demander l'accès à tes données, leur correction ou leur export, et retirer ton consentement à tout moment, sans que cela touche à ce qui a été fait avant.</li>
   </ul>
 
   <h2 id="contact">Contact</h2>
   <p>Pour toute question, un problème ou une demande d'effacement :</p>
   <ul>
+    <li>dans l'app, avec le bouton « Remarque » (elle part à l'équipe si tu es dans le test) ;</li>
     <li>sur iPhone, dans l'app TestFlight : ouvre EatBuddy, puis « Envoyer un commentaire bêta » ; ou, dans EatBuddy, fais une capture d'écran et touche « Partager un commentaire bêta » ;</li>
     <li>ou ouvre un ticket sur <a href="https://github.com/enzotrp974/enzotrp974.github.io/issues">la page GitHub de ce site</a> (publique : n'y mets ni donnée de santé ni information personnelle) ;</li>
     <li>ou demande-le directement à la personne qui t'a invité au test : elle transmet à l'équipe.</li>
